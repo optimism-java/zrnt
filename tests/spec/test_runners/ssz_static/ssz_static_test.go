@@ -6,6 +6,8 @@ import (
 	"io/ioutil"
 	"testing"
 
+	"github.com/protolambda/zrnt/eth2/beacon/electra"
+
 	"github.com/protolambda/zrnt/eth2/beacon/capella"
 	"github.com/protolambda/zrnt/eth2/beacon/deneb"
 
@@ -104,6 +106,7 @@ var objs = map[test_util.ForkName]map[string]ObjAllocator{
 	"bellatrix": {},
 	"capella":   {},
 	"deneb":     {},
+	"electra":   {},
 }
 
 func init() {
@@ -136,6 +139,8 @@ func init() {
 		objs["altair"][k] = v
 		objs["bellatrix"][k] = v
 		objs["capella"][k] = v
+		objs["deneb"][k] = v
+		objs["electra"][k] = v
 	}
 	objs["phase0"]["BeaconBlockBody"] = func() interface{} { return new(phase0.BeaconBlockBody) }
 	objs["phase0"]["BeaconBlock"] = func() interface{} { return new(phase0.BeaconBlock) }
@@ -184,6 +189,9 @@ func init() {
 	objs["capella"]["LightClientFinalityUpdate"] = func() interface{} { return new(capella.LightClientFinalityUpdate) }
 	objs["capella"]["LightClientOptimisticUpdate"] = func() interface{} { return new(capella.LightClientOptimisticUpdate) }
 
+	objs["deneb"]["BeaconBlockBody"] = func() interface{} { return new(deneb.BeaconBlockBody) }
+	objs["deneb"]["BeaconBlock"] = func() interface{} { return new(deneb.BeaconBlock) }
+	objs["deneb"]["BeaconState"] = func() interface{} { return new(deneb.BeaconState) }
 	objs["deneb"]["SignedBeaconBlock"] = func() interface{} { return new(deneb.SignedBeaconBlock) }
 	objs["deneb"]["ExecutionPayload"] = func() interface{} { return new(deneb.ExecutionPayload) }
 	objs["deneb"]["ExecutionPayloadHeader"] = func() interface{} { return new(deneb.ExecutionPayloadHeader) }
@@ -192,6 +200,24 @@ func init() {
 	objs["deneb"]["LightClientUpdate"] = func() interface{} { return new(deneb.LightClientUpdate) }
 	objs["deneb"]["LightClientFinalityUpdate"] = func() interface{} { return new(deneb.LightClientFinalityUpdate) }
 	objs["deneb"]["LightClientOptimisticUpdate"] = func() interface{} { return new(deneb.LightClientOptimisticUpdate) }
+
+	objs["electra"]["BeaconBlockBody"] = func() interface{} { return new(electra.BeaconBlockBody) }
+	objs["electra"]["BeaconBlock"] = func() interface{} { return new(electra.BeaconBlock) }
+	objs["electra"]["BeaconState"] = func() interface{} { return new(electra.BeaconState) }
+	objs["electra"]["SignedBeaconBlock"] = func() interface{} { return new(electra.SignedBeaconBlock) }
+	objs["electra"]["AggregateAndProof"] = func() interface{} { return new(electra.AggregateAndProof) }
+	objs["electra"]["SignedAggregateAndProof"] = func() interface{} { return new(electra.SignedAggregateAndProof) }
+	objs["electra"]["Attestation"] = func() interface{} { return new(electra.Attestation) }
+	objs["electra"]["SingleAttestation"] = func() interface{} { return new(electra.SingleAttestation) }
+	objs["electra"]["IndexedAttestation"] = func() interface{} { return new(electra.IndexedAttestation) }
+	objs["electra"]["AttesterSlashing"] = func() interface{} { return new(electra.AttesterSlashing) }
+	objs["electra"]["DepositRequest"] = func() interface{} { return new(common.DepositRequest) }
+	objs["electra"]["WithdrawalRequest"] = func() interface{} { return new(common.WithdrawalRequest) }
+	objs["electra"]["ConsolidationRequest"] = func() interface{} { return new(common.ConsolidationRequest) }
+	objs["electra"]["PendingDeposit"] = func() interface{} { return new(common.PendingDeposit) }
+	objs["electra"]["PendingPartialWithdrawal"] = func() interface{} { return new(common.PendingPartialWithdrawal) }
+	objs["electra"]["PendingConsolidation"] = func() interface{} { return new(common.PendingConsolidation) }
+	objs["electra"]["ExecutionRequests"] = func() interface{} { return new(electra.ExecutionRequests) }
 }
 
 type RootsYAML struct {
