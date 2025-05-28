@@ -218,6 +218,9 @@ func init() {
 	objs["electra"]["PendingPartialWithdrawal"] = func() interface{} { return new(common.PendingPartialWithdrawal) }
 	objs["electra"]["PendingConsolidation"] = func() interface{} { return new(common.PendingConsolidation) }
 	objs["electra"]["ExecutionRequests"] = func() interface{} { return new(electra.ExecutionRequests) }
+	objs["electra"]["LightClientBootstrap"] = func() interface{} { return new(electra.LightClientBootstrap) }
+	objs["electra"]["LightClientUpdate"] = func() interface{} { return new(electra.LightClientUpdate) }
+	objs["electra"]["LightClientFinalityUpdate"] = func() interface{} { return new(electra.LightClientFinalityUpdate) }
 }
 
 type RootsYAML struct {
