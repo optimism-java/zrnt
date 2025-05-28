@@ -153,7 +153,7 @@ type LightClientUpdate struct {
 	NextSyncCommittee       common.SyncCommittee     `yaml:"next_sync_committee" json:"next_sync_committee"`
 	NextSyncCommitteeBranch SyncCommitteeProofBranch `yaml:"next_sync_committee_branch" json:"next_sync_committee_branch"`
 	// Finality proof for the update header
-	FinalizedHeader LightClientHeader `yaml:"finalized_header" json:"finalized_header"`
+	FinalizedHeader LightClientHeader        `yaml:"finalized_header" json:"finalized_header"`
 	FinalityBranch  FinalizedRootProofBranch `yaml:"finality_branch" json:"finality_branch"`
 	// Sync committee aggregate signature
 	SyncAggregate SyncAggregate `yaml:"sync_aggregate" json:"sync_aggregate"`

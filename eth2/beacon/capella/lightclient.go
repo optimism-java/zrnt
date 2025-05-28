@@ -43,8 +43,8 @@ func (eb *ExecutionBranch) HashTreeRoot(hFn tree.HashFn) common.Root {
 
 type LightClientHeader struct {
 	Beacon          common.BeaconBlockHeader `yaml:"beacon" json:"beacon"`
-	Execution       ExecutionPayloadHeader `yaml:"execution" json:"execution"`
-	ExecutionBranch ExecutionBranch `yaml:"execution_branch" json:"execution_branch"`
+	Execution       ExecutionPayloadHeader   `yaml:"execution" json:"execution"`
+	ExecutionBranch ExecutionBranch          `yaml:"execution_branch" json:"execution_branch"`
 }
 
 var LightClientHeaderType = view.ContainerType("LightClientHeader", []view.FieldDef{
@@ -74,8 +74,8 @@ func (l *LightClientHeader) HashTreeRoot(h tree.HashFn) common.Root {
 }
 
 type LightClientBootstrap struct {
-	Header                     LightClientHeader `yaml:"header" json:"header"`
-	CurrentSyncCommittee       common.SyncCommittee `yaml:"current_sync_committee" json:"current_sync_committee"`
+	Header                     LightClientHeader               `yaml:"header" json:"header"`
+	CurrentSyncCommittee       common.SyncCommittee            `yaml:"current_sync_committee" json:"current_sync_committee"`
 	CurrentSyncCommitteeBranch altair.SyncCommitteeProofBranch `yaml:"current_sync_committee_branch" json:"current_sync_committee_branch"`
 }
 
@@ -130,7 +130,7 @@ type LightClientUpdate struct {
 	NextSyncCommittee       common.SyncCommittee            `yaml:"next_sync_committee" json:"next_sync_committee"`
 	NextSyncCommitteeBranch altair.SyncCommitteeProofBranch `yaml:"next_sync_committee_branch" json:"next_sync_committee_branch"`
 	// Finality proof for the update header
-	FinalizedHeader LightClientHeader        `yaml:"finalized_header" json:"finalized_header"`
+	FinalizedHeader LightClientHeader               `yaml:"finalized_header" json:"finalized_header"`
 	FinalityBranch  altair.FinalizedRootProofBranch `yaml:"finality_branch" json:"finality_branch"`
 	// Sync committee aggregate signature
 	SyncAggregate altair.SyncAggregate `yaml:"sync_aggregate" json:"sync_aggregate"`
@@ -192,7 +192,7 @@ func (lcu *LightClientUpdate) HashTreeRoot(spec *common.Spec, hFn tree.HashFn) c
 
 type LightClientFinalityUpdate struct {
 	AttestedHeader  LightClientHeader               `yaml:"attested_header" json:"attested_header"`
-	FinalizedHeader LightClientHeader        `yaml:"finalized_header" json:"finalized_header"`
+	FinalizedHeader LightClientHeader               `yaml:"finalized_header" json:"finalized_header"`
 	FinalityBranch  altair.FinalizedRootProofBranch `yaml:"finality_branch" json:"finality_branch"`
 	SyncAggregate   altair.SyncAggregate            `yaml:"sync_aggregate" json:"sync_aggregate"`
 	SignatureSlot   common.Slot                     `yaml:"signature_slot" json:"signature_slot"`
